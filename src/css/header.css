@@ -1,0 +1,79 @@
+.header {
+  background-color: #8B9620;
+}
+
+.header .logo img {
+  margin: auto 0;
+  width: 120px;
+  padding: 0 20px;
+  background-color: white;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.header ul {
+  list-style: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.header ul li {
+  color: white;
+  background-color: #8B9620;
+  padding: 20px;
+}
+
+.header ul li a {
+  padding: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.header ul li a:hover {
+  color: #8B9620;
+  background-color: #F0EDE3;
+}
+
+.header .search-form form input {
+  padding: 15px;
+  border: 2px solid #8B9620;
+  background-color: white;
+}
+
+.header .search-form form button {
+  cursor: pointer;
+  color: white;
+  padding: 15px;
+  border: 1px solid white;
+  background-color: #8B9620;
+}
+
+.header .search-form form button:hover {
+  color: #8B9620;
+  background-color: #F0EDE3;
+}
+
+.header .row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header .connexion-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .connexion-col button {
+  border: 2px solid transparent;
+}
+
+.header .connexion-col button:hover {
+  border: 2px solid white;
+}
+/*# sourceMappingURL=header.css.map */
