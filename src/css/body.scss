@@ -244,6 +244,18 @@ form{
     text-align: left;
     li{
         border-bottom: 1px solid black;
+        display: flex;
+        text-decoration: none;
+        color:white;
+        padding: 30px 30px 30px 90px;
+        background-color: #8b9620;
+        border: 2px solid transparent;
+        cursor:pointer;
+        &:hover{
+            color:#8b9620;
+            border: 2px solid #8b9620;
+            background-color: white;
+        }
         &:last-child{
             border-bottom: 1px solid transparent;
         }
@@ -296,18 +308,37 @@ form{
         }
 
     }
-    a{
-        display: flex;
-        text-decoration: none;
-        color:white;
-        padding: 30px 30px 30px 90px;
-        background-color: #8b9620;
-        border: 2px solid transparent;
-        &:hover{
-            color:#8b9620;
-            border: 2px solid #8b9620;
-            background-color: white;
-        }
 
-    }
 }
+
+// .administration {
+//     display: flex;
+//   }
+  
+//   .sidebar-container {
+//     flex: 0 0 200px;
+//   }
+  
+//   .content-container {
+//     flex: 1;
+//   }
+  
+//   .sidebar {
+//     padding: 20px;
+//     background: #f2f2f2;
+//   }
+  
+//   .sidebar-menu {
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+//   }
+  
+//   .sidebar-menu li {
+//     margin-bottom: 10px;
+//   }
+  
+//   .content {
+//     padding: 20px;
+//     background: #fff;
+//   }

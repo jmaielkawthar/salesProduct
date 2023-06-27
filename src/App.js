@@ -14,12 +14,6 @@ import DetailCard from './Components/DetailCard';
 import Filter from './Components/Filter';
 import Footer from './Components/Footer';
 import Administration from './Components/Administration';
-import Users from './Components/Users';
-import Products from './Components/Products';
-import Transportations from './Components/Transportations';
-import Commandes from './Components/Commandes';
-import Categories from './Components/Categories';
-
 
 function App() {
   const [data, setData] = useState(productData);
@@ -43,14 +37,9 @@ function App() {
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/administration" element={<Administration />} />
-              {/* <Route path="/Users" element={<Users />} />
-              <Route path="/Products" element={<Products />} />
-              <Route path="/Transportations" element={<Transportations />} />
-              <Route path="/Categories" element={<Categories />} />
-              <Route path="/Commandes" element={<Commandes />} /> */}
               <Route path="/details/:id"  element={<DetailCard product={data}  />}/>
-              
             </Routes>
+
             <Footer/>
           </Router>
          

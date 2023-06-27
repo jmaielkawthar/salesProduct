@@ -326,6 +326,21 @@ form [type=file], form [type=date] {
 
 .sidebar-menu li {
   border-bottom: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  color: white;
+  padding: 30px 30px 30px 90px;
+  background-color: #8b9620;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.sidebar-menu li:hover {
+  color: #8b9620;
+  border: 2px solid #8b9620;
+  background-color: white;
 }
 
 .sidebar-menu li:last-child {
@@ -368,22 +383,5 @@ form [type=file], form [type=date] {
 
 .sidebar-menu li.commande::after {
   background-image: url(../img/order.png);
-}
-
-.sidebar-menu a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-decoration: none;
-  color: white;
-  padding: 30px 30px 30px 90px;
-  background-color: #8b9620;
-  border: 2px solid transparent;
-}
-
-.sidebar-menu a:hover {
-  color: #8b9620;
-  border: 2px solid #8b9620;
-  background-color: white;
 }
 /*# sourceMappingURL=body.css.map */
