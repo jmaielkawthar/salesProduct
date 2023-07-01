@@ -342,3 +342,51 @@ form{
 //     padding: 20px;
 //     background: #fff;
 //   }
+.forms{
+    padding: 0 30px;
+}
+.container-form{
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.crud-table{
+    margin: 0 auto;
+    border: 1px solid black;
+    border-spacing: 0;
+
+    td, th{
+        border: 1px solid black;
+        padding: 15px 10px;
+        word-break: break-all;
+        max-width: 100px;
+        width: fit-content;
+
+        p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; /* Set the desired number of lines */
+        }
+    }
+}
+.crud-form{
+    label{
+         width: 30%;
+    }
+    .form-row{
+        display: flex;
+    }
+}
+.product_modal{
+    .ReactModal__Content{
+        max-width: 500px;
+        padding: 40px;
+        margin: 30px;
+        border: 1px solid #8b9620;
+        img{
+            max-height: 300px;
+        }
+    }
+}

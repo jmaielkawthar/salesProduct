@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo1 from "../img/Logo-Yves-Rocher.jpg";
-import Filter from "./Filter";
 import Connection from './Connexion';
 import Register from './Register';
 import { userData } from "../userData";

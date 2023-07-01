@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import EditCard from "./EditCard";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const DetailCard = ({ product, handleEdit }) => {
+const DetailCard = () => {
   const { id } = useParams();
-  const item = product.find((el) => el.id == id);
+  const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3008/product/${id}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  const handlePrevious = () => {
+    navigate(-1); // Go back to the previous page
+  };
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="detailCard">
@@ -13,27 +35,28 @@ const DetailCard = ({ product, handleEdit }) => {
         <Row>
           <Col sm={5}>
             <div className="image">
-              <img src={item.image} alt={item.name}  />
+              <img src={product.image} alt={product.name_product} />
             </div>
           </Col>
           <Col sm={5}>
             <div className="text">
-              <p className="title">{item.name}</p>
-              <p className="date">{item.date}</p>
-              <p className="prix">{item.prix}</p>
-              <p>{item.type}</p>
+              <p className="ref">{product.ref}</p>
+              <p className="date">{product.date}</p>
+              <p className="prix">{product.price}</p>
+              <p className="type">
+                {product.category ? product.category.name_category : ""}
+              </p>
               <div className="text-detail">
-              <p>{item.detail}</p>
-            
+                <p>{product.description}</p>
+              </div>
             </div>
-            </div>
-            
-           
-           </Col>
+          </Col>
         </Row>
       </Container>
-      
 
+      <button className="btn" onClick={handlePrevious}>
+        Previous
+      </button>
     </div>
   );
 };

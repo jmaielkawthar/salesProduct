@@ -6,40 +6,74 @@ import './css/body.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ContactUs from './Components/ContactUs';
 import AboutUs from './Components/AboutUs';
-import ProductList from './Components/ProductList';
-import { productData } from "./data";
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DetailCard from './Components/DetailCard';
-// import AddCard from './Components/AddCard';
 import Filter from './Components/Filter';
 import Footer from './Components/Footer';
 import Administration from './Components/Administration';
+import ProductCard from './Components/ProductCard';
+import axios from 'axios';
+import CardList from './Components/CardList';
 
 function App() {
-  const [data, setData] = useState(productData);
+  
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [textSearch, setTextSearch] = useState("");
-  const handleSearch=(x)=>setTextSearch(x);
-  const handleDelete =(id) =>setData(data.filter(el =>el.id!==id));
-  const handleEdit=(id)=>setData(data.map(el=>el.id===id.id?id:el));
-  const handleAdd = (newMovie)=> setData([...data,newMovie]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get('http://localhost:3008/product');
+      setProducts(response.data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  const handleSearch = (searchTerm) => {
+    setTextSearch(searchTerm);
+    filterProducts(searchTerm);
+  };
+
+  const filterProducts = (searchTerm) => {
+    const filtered = products.filter((product) =>
+      product.name_product.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
+
+  const handleAddCard = (id) => {
+    // Handle adding card
+    // ...
+  };
 
   return (
     <div className="App">
           <Router>
           <Header/>
-          {/* <AddCard  handleAdd={handleAdd}/> */}
-
-          <Filter textSearch={textSearch} handleSearch={handleSearch}  />
-         
-            <Routes>
-              <Route path="/" element={<ProductList list={data.filter(el=>el.name.toLowerCase().includes(textSearch.toLowerCase()))} handleDelete={handleDelete}  handleEdit={handleEdit}/>} />
-              <Route path="/filter" element={<Filter textSearch={textSearch} handleSearch={handleSearch}  />} />
+          <Filter handleSearch={handleSearch}   />
+          <Routes>
+              <Route
+                path="/"
+                element={<ProductCard handleAddCard={handleAddCard} products={filteredProducts.length > 0 ? filteredProducts : products} />}
+              />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/administration" element={<Administration />} />
-              <Route path="/details/:id"  element={<DetailCard product={data}  />}/>
-            </Routes>
-
+              <Route
+                path="/cardlist"
+                element={<CardList products={selectedProducts} />}
+              />
+              <Route
+                path="/details/:id"
+                element={<DetailCard products={filteredProducts.length > 0 ? filteredProducts : products} />}
+              />
+          </Routes>
             <Footer/>
           </Router>
          

@@ -1,4 +1,4 @@
-import { Link, Route, Switch, useLocation } from 'react-router-dom';
+
 import React, { useState } from 'react';
 import Users from '../Components/Users';
 import Products from '../Components/Products';
@@ -14,23 +14,21 @@ const handleMenuItemClick = (item) => {
 setSelectedItem(item);
 };
 
-const location = useLocation();
-
 return (
 <div className="menu">
-    <Container>
+    <Container className='container-form' fluid >
         <Row>
-            <Col sm={2}>
+            <Col sm={2} style={{ minWidth: '20%' }}>
             <ul className="sidebar-menu">
-                <li class="user" onClick={()=> handleMenuItemClick('Item 1')}>Users</li>
-                <li class="product" onClick={()=> handleMenuItemClick('Item 2')}>Products</li>
-                <li class="transport" onClick={()=> handleMenuItemClick('Item 3')}>Transportations</li>
-                <li class="categorie" onClick={()=> handleMenuItemClick('Item 4')}>Categories</li>
-                <li class="commande" onClick={()=> handleMenuItemClick('Item 5')}>Commandes</li>
+                <li className="user" onClick={()=> handleMenuItemClick('Item 1')}>Users</li>
+                <li className="product" onClick={()=> handleMenuItemClick('Item 2')}>Products</li>
+                <li className="transport" onClick={()=> handleMenuItemClick('Item 3')}>Transportations</li>
+                <li className="categorie" onClick={()=> handleMenuItemClick('Item 4')}>Categories</li>
+                <li className="commande" onClick={()=> handleMenuItemClick('Item 5')}>Commandes</li>
             </ul>
             </Col>
 
-            <Col sm={10}>
+            <Col sm={10} style={{ minWidth: '70%', maxWidth:'80%' }}>
             <div className="content">
                 {selectedItem === 'Item 1' && <div>
                     <Users />
@@ -55,16 +53,5 @@ return (
 );
 };
 
-const Home = () => {
-return <h2>Home Content</h2>;
-};
-
-const About = () => {
-return <h2>About Content</h2>;
-};
-
-const Contact = () => {
-return <h2>Contact Content</h2>;
-};
 
 export default Menu;

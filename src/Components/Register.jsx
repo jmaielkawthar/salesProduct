@@ -1,55 +1,55 @@
-import React, { useState } from "react";
-// import { Col, Container, Row } from "react-bootstrap";
-import Modal from "react-modal";
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import axios from 'axios';
 
-const Register= ({ handleAdd }) => {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [adresse, setAdresse] = useState("");
-  const [cin, setCin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+const Register = ({ handleAdd }) => {
+  const [name, setName] = useState('');
+  const [cin, setCin] = useState('');
+  const [telephone, setTelephone] = useState('');
+  const [adresse, setAdresse] = useState('');
+  const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newOne = {
+    const newUser = {
       id: Math.random(),
       name,
-      image,
+      cin_user: cin,
       telephone,
       adresse,
-      cin,
+      age,
       email,
       password,
       role,
     };
-    handleAdd(newOne);
-    setName("");
-    setImage("");
-    setTelephone("");
-    setAdresse("");
-    setCin("");
-    setEmail("");
-    setPassword("");
-    setRole("");
+
+    try {
+      await axios.post('http://localhost:3008/users', newUser);
+      console.log('User added:', newUser);
+      handleAdd(newUser);
+      handleReset();
+      closeModal();
+    } catch (error) {
+      console.error('Error saving user:', error);
+    }
   };
 
   const customStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
     },
   };
 
-  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-  Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  Modal.setAppElement('#root');
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -58,6 +58,19 @@ const Register= ({ handleAdd }) => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const handleReset = () => {
+    setName('');
+    setCin('');
+    setTelephone('');
+    setAdresse('');
+    setAge('');
+    setEmail('');
+    setPassword('');
+    setRole('');
+    
+  };
+
   return (
     <div className="register">
       <button onClick={openModal}>Register </button>
@@ -74,12 +87,13 @@ const Register= ({ handleAdd }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <div className="image">
-            <label>Product image</label>
+          <div className="form-row">
+            <label htmlFor="age">Age:</label>
             <input
-              type="file"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              type="text"
+              id="age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
             />
           </div>
           <label>Telephone</label>
@@ -120,7 +134,7 @@ const Register= ({ handleAdd }) => {
           />
           <div>
             <button className="btn" type="submit">
-              register
+              Register
             </button>
             <button className="btn" onClick={closeModal}>
               Cancel
