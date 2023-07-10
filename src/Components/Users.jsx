@@ -17,7 +17,7 @@ const Users = () => {
   // Get users
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/users');
+      const response = await axios.get('https://salesproduct-api.onrender.com/users');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -45,13 +45,13 @@ const Users = () => {
   
       if (editingUser) {
         await axios.put(
-          `http://localhost:3008/users/${editingUser._id}`,
+          `https://salesproduct-api.onrender.com/users/${editingUser._id}`,
           userData
         );
         console.log('User updated:', editingUser._id);
         setEditingUser(null);
       } else {
-        const response = await axios.post('http://localhost:3008/users', userData);
+        const response = await axios.post('https://salesproduct-api.onrender.com/users', userData);
         console.log('User added:', response.data);
       }
   
@@ -78,7 +78,7 @@ const Users = () => {
   // Delete user
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:3008/users/${userId}`);
+      await axios.delete(`https://salesproduct-api.onrender.com/users/${userId}`);
       console.log('User deleted:', userId);
       fetchUsers();
     } catch (error) {

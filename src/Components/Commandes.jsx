@@ -15,7 +15,7 @@ const Commande = () => {
   // Get Commandes
   const fetchCommandes = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/commande');
+      const response = await axios.get('https://salesproduct-api.onrender.com/commande');
       setCommandes(response.data);
     } catch (error) {
       console.error('Error fetching Commandes:', error);
@@ -25,7 +25,7 @@ const Commande = () => {
   // Get Products
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/product');
+      const response = await axios.get('https://salesproduct-api.onrender.com/product');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching Products:', error);
@@ -35,7 +35,7 @@ const Commande = () => {
   // Get Users
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/users');
+      const response = await axios.get('https://salesproduct-api.onrender.com/users');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching Users:', error);
@@ -45,7 +45,7 @@ const Commande = () => {
   // Get Transportations
   const fetchTransportations = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/transportation');
+      const response = await axios.get('https://salesproduct-api.onrender.com/transportation');
       setTransportations(response.data);
     } catch (error) {
       console.error('Error fetching Transportations:', error);
@@ -72,13 +72,13 @@ const Commande = () => {
 
       if (editingCommande) {
         await axios.put(
-          `http://localhost:3008/commande/${editingCommande._id}`,
+          `https://salesproduct-api.onrender.com/commande/${editingCommande._id}`,
           commandeData
         );
         console.log('Commande updated:', editingCommande._id);
         setEditingCommande(null);
       } else {
-        const response = await axios.post('http://localhost:3008/commande', commandeData);
+        const response = await axios.post('https://salesproduct-api.onrender.com/commande', commandeData);
         console.log('Commande added:', response.data);
       }
 
@@ -101,7 +101,7 @@ const Commande = () => {
   // Delete commande
   const handleDelete = async (commandeId) => {
     try {
-      await axios.delete(`http://localhost:3008/commande/${commandeId}`);
+      await axios.delete(`hhttps://salesproduct-api.onrender.com/commande/${commandeId}`);
       console.log('Commande deleted:', commandeId);
       fetchCommandes();
     } catch (error) {

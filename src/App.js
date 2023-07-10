@@ -28,7 +28,7 @@ function App() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/product');
+      const response = await axios.get('https://salesproduct-api.onrender.com/product');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);

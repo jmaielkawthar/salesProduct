@@ -27,7 +27,7 @@ const Register = ({ handleAdd }) => {
     };
 
     try {
-      await axios.post('http://localhost:3008/users', newUser);
+      await axios.post('https://salesproduct-api.onrender.com/users', newUser);
       console.log('User added:', newUser);
       handleAdd(newUser);
       handleReset();

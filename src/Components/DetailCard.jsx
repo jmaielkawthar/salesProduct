@@ -11,7 +11,7 @@ const DetailCard = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:3008/product/${id}`);
+        const response = await axios.get(`https://salesproduct-api.onrender.com/product/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product:", error);

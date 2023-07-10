@@ -12,7 +12,7 @@ const Transportations = () => {
   // Get Transportations
   const fetchTransportations = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/transportation');
+      const response = await axios.get('https://salesproduct-api.onrender.com/transportation');
       setTransportations(response.data);
     } catch (error) {
       console.error('Error fetching Transportations:', error);
@@ -36,13 +36,13 @@ const Transportations = () => {
 
       if (editingTransportation) {
         await axios.put(
-          `http://localhost:3008/transportation/${editingTransportation._id}`,
+          `https://salesproduct-api.onrender.com/transportation/${editingTransportation._id}`,
           transportationData
         );
         console.log('Transportation updated:', editingTransportation._id);
         setEditingTransportation(null);
       } else {
-        const response = await axios.post('http://localhost:3008/transportation', transportationData);
+        const response = await axios.post('https://salesproduct-api.onrender.com/transportation', transportationData);
         console.log('Transportation added:', response.data);
       }
 
@@ -65,7 +65,7 @@ const Transportations = () => {
   // Delete transportation
   const handleDelete = async (transportationId) => {
     try {
-      await axios.delete(`http://localhost:3008/transportation/${transportationId}`);
+      await axios.delete(`https://salesproduct-api.onrender.com/transportation/${transportationId}`);
       console.log('Transportation deleted:', transportationId);
       fetchTransportations();
     } catch (error) {

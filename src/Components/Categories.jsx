@@ -10,7 +10,7 @@ const Categories = () => {
   // Get Categories
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/category');
+      const response = await axios.get('https://salesproduct-api.onrender.com/category');
       setCategories(response.data);
     } catch (error) {
       console.error('Error fetching Categories:', error);
@@ -31,13 +31,13 @@ const Categories = () => {
   
       if (editingCategorie) {
         await axios.put(
-          `http://localhost:3008/category/${editingCategorie._id}`,
+          `https://salesproduct-api.onrender.com/category/${editingCategorie._id}`,
           categorieData
         );
         console.log('categorie updated:', editingCategorie._id);
         seteditingCategorie(null);
       } else {
-        const response = await axios.post('http://localhost:3008/category', categorieData);
+        const response = await axios.post('https://salesproduct-api.onrender.com/category', categorieData);
         console.log('categorie added:', response.data);
       }
   
@@ -57,7 +57,7 @@ const Categories = () => {
   // Delete categorie
   const handleDelete = async (categorieId) => {
     try {
-      await axios.delete(`http://localhost:3008/category/${categorieId}`);
+      await axios.delete(`https://salesproduct-api.onrender.com/category/${categorieId}`);
       console.log('categorie deleted:', categorieId);
       fetchCategories();
     } catch (error) {

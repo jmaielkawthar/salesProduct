@@ -20,7 +20,7 @@ const Products = () => {
   // Fetch Categories
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/category');
+      const response = await axios.get('https://salesproduct-api.onrender.com/category');
       setCategories(response.data);
     } catch (error) {
       console.error('Error fetching Categories:', error);
@@ -34,7 +34,7 @@ const Products = () => {
   // Get Products
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3008/product');
+      const response = await axios.get('https://salesproduct-api.onrender.com/product');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching Products:', error);
@@ -62,13 +62,13 @@ const Products = () => {
 
       if (editingProduct) {
         await axios.put(
-          `http://localhost:3008/product/${editingProduct._id}`,
+          `https://salesproduct-api.onrender.com/product/${editingProduct._id}`,
           productData
         );
         console.log('Product updated:', editingProduct._id);
         setEditingProduct(null);
       } else {
-        await axios.post('http://localhost:3008/product', productData);
+        await axios.post('https://salesproduct-api.onrender.com/product', productData);
         console.log('Product added');
       }
       fetchCategories();
@@ -94,7 +94,7 @@ const Products = () => {
   // Delete product
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3008/product/${productId}`);
+      await axios.delete(`https://salesproduct-api.onrender.com/product/${productId}`);
       console.log('Product deleted:', productId);
       fetchProducts();
     } catch (error) {

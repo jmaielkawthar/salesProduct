@@ -13,7 +13,7 @@ const Filter = ({ textSearch, handleSearch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:3008/product?search=${searchTerm}`);
+      const response = await axios.get(`https://salesproduct-api.onrender.com/product?search=${searchTerm}`);
       handleSearch(response.data);
     } catch (error) {
       console.error('Error filtering products:', error);
